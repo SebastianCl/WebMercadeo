@@ -6,20 +6,20 @@
 
 <div class="container">
 
-	<form action='clases/Registro_Establecimiento.php' method='post'>
+	<form action='clases/Registro_Establecimientos.php' method='post'>
 
 		<div class="input-group">
 			<span class="input-group-addon">
 				<span class="glyphicon glyphicon-user"></span>
 			</span>
-					<input class="form-control" id="nombre" name="nombre" type="text" placeholder="Nombre Establecimiento" required="true">
+					<input class="form-control" id="nombre_establecimiento" name="nombre_establecimiento" type="text" placeholder="Nombre Establecimiento" required="true">
 		</div>
 
 		<div class="input-group">
 			<span class="input-group-addon">
 				<span class="glyphicon glyphicon-lock"></span>
 			</span>
-					<input class="form-control" id="nit" name="nit" type="password" placeholder="Nit" >
+					<input class="form-control" id="nit" name="nit" type="text" placeholder="NIT" >
 		</div>
 
 		<div class="input-group">
@@ -53,7 +53,7 @@
 
 
 	<button type="submit" class="btn btn-default btn-block">
-	  <span class="glyphicon glyphicon-send"></span> Enviar
+	  <span class="glyphicon glyphicon-send"></span> Nuevo Establecimiento
 	</button>
 
 	</form>

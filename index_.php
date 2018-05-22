@@ -33,14 +33,11 @@ if (isset($_GET['menu'])) {
     }
 
     if ($_GET['menu'] == 'ingreso') {
-
         require_once 'usuarios/ingresar.php';
     }
 
     if ($_GET['menu'] == 'form_ingreso') {
-
         require_once 'clases/ingreso.php';
-
     }
 
     if ($_GET['menu'] == 'registros') {
@@ -64,7 +61,7 @@ if (isset($_GET['menu'])) {
             echo "alert('Inicie Session').";
         }
     }
-    if ($_GET['menu'] == 'administrador') {
+    /*if ($_GET['menu'] == 'administrador') {
         if (isset($_SESSION["Session"]) && $_SESSION["Session"] != null) {
             require_once 'usuarios/administrador.php';
         } else {
@@ -87,16 +84,16 @@ if (isset($_GET['menu'])) {
         } else {
             header("Location: index_.php");
         }
-    }
+    }*/
     if ($_GET['menu'] == 'cerrar') {
         require_once 'clases/cerrar.php';
         header("Location: index_.php");
     }
     if ($_GET['menu'] == 'crearBD') {
-        include_once "clases/crearBD.php";
+        include_once "clases/crearBD.php";        
         include_once "clases/CreaTablaBD.php";
         include_once "clases/llenarBD.php";
-        require_once 'clases/cerrar.php';
+        require_once 'clases/cerrar.php';        
         header("Location: index_.php");
     }
 }

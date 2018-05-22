@@ -61,7 +61,7 @@ if (isset($_COOKIE['login1'])) {
             $db->close();
         }
     } else {
-        require_once "usuarios/administrador.php";
+        require_once "usuarios/menuAdmin.php";
     }
 //si no se ha creado el administrador hace lo siguiente:
 } else {
@@ -76,7 +76,7 @@ if (isset($_COOKIE['login1'])) {
             $clave_default   = "1";
 
             if ($usuario_default == $_POST['usuario'] && $clave_default == $_POST['clave']) {
-                require_once "usuarios/administrador.php";
+                require_once "usuarios/menuAdmin.php";
                 header("Location: index_.php");
                 $_SESSION["Login1"] = "Activo";
             } else {
@@ -86,7 +86,7 @@ if (isset($_COOKIE['login1'])) {
         }
 
     } else {
-        require_once "usuarios/administrador.php";
+        require_once "usuarios/menuAdmin.php";
     }
 
 }

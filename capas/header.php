@@ -46,7 +46,7 @@ if (!isset($_SESSION["Session"]) && !isset($_SESSION["Login1"])) {?>
 	<li>
 		<?php
 
-if ($_COOKIE["rol"] == "A" && isset($_SESSION["Session"])) {?>
+if (isset($_COOKIE["rol"]) && $_COOKIE["rol"] == "A" && isset($_SESSION["Session"])) {?>
 		<a href="?menu=menuAdmin"><span class="glyphicon glyphicon-tasks"></span>
 			Menu
 		</a>
