@@ -3,7 +3,7 @@
 
 $id = $_POST['idTendero'];
 $clave = $_POST['clave'];
-$nombre = $_POST['nombre'];
+$nombre_tendero = $_POST['nombre'];
 $Cuidad = $_POST['Cuidad'];
 $Direccion = $_POST['Direccion'];
 $Telefono = $_POST['Telefono'];
@@ -11,20 +11,16 @@ $Telefono = $_POST['Telefono'];
 $Clave=$clave;
 
 echo "$clave";
-if(isset($clave) && isset($nombre) && isset($Cuidad) && isset($Direccion) && isset($Telefono)){
-	
-//Establecemos conexion con el servidor 
-	
+if(isset($clave) && isset($nombre_tendero) && isset($Cuidad) && isset($Direccion) && isset($Telefono)){	
+//Establecemos conexion con el servidor 	
 	
 	$nombre="mercadeo";
-	include("conexion.php");
-
-	
+	include("conexion.php");	
 
 
 	$stmt5 = $db->prepare("insert into tbltenderos values(?,?,?,?,?,?);");
 
-	$stmt5 ->bind_param('ssssss',$id,$Clave,$nombre,$Cuidad,$Direccion,$Telefono);
+	$stmt5 ->bind_param('ssssss',$id,$Clave,$nombre_tendero,$Cuidad,$Direccion,$Telefono);
 	$stmt5->execute();
 
 if (!$stmt5) {

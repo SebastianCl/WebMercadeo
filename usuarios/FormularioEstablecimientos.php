@@ -10,7 +10,7 @@
 
 		<div class="input-group">
 			<span class="input-group-addon">
-				<span class="glyphicon glyphicon-user"></span>
+				<span class="glyphicon glyphicon-home"></span>
 			</span>
 					<input class="form-control" id="nombre_establecimiento" name="nombre_establecimiento" type="text" placeholder="Nombre Establecimiento" required="true">
 		</div>
@@ -19,41 +19,41 @@
 			<span class="input-group-addon">
 				<span class="glyphicon glyphicon-lock"></span>
 			</span>
-					<input class="form-control" id="nit" name="nit" type="text" placeholder="NIT" >
+					<input class="form-control" id="nit" name="nit" type="number" min="0" placeholder="NIT" required="true">
 		</div>
 
 		<div class="input-group">
 			<span class="input-group-addon">
-				<span class="glyphicon glyphicon-edit"></span>
+				<span class="glyphicon glyphicon-map-marker"></span>
 			</span>
-					<input class="form-control" id="cuidad" name="cuidad" type="text" placeholder="Cuidad" required="true">
+					<input class="form-control" id="ciudad" name="ciudad" type="text" placeholder="Ciudad" required="true">
 		</div>
 
 		<div class="input-group">
 			<span class="input-group-addon">
-				<span class="glyphicon glyphicon-edit"></span>
+				<span class="glyphicon glyphicon-map-marker"></span>
 			</span>
-					<input class="form-control" id="barrio" name="barrio" type="text" placeholder="Barrio">
+					<input class="form-control" id="barrio" name="barrio" type="text" placeholder="Barrio" required="true">
 		</div>
 
 		<div class="input-group">
 			<span class="input-group-addon">
-				<span class="glyphicon glyphicon-edit"></span>
+				<span class="glyphicon glyphicon-map-marker"></span>
 			</span>
 					<input class="form-control" id="direccion" name="direccion" type="text" placeholder="Direccion" required="true">
 		</div>
 
 		<div class="input-group">
 			<span class="input-group-addon">
-				<span class="glyphicon glyphicon-edit"></span>
+				<span class="glyphicon glyphicon-earphone"></span>
 			</span>
-					<input class="form-control" id="telefono" name="telefono" type="text" placeholder="Telefono">
+					<input class="form-control" id="telefono" name="telefono" type="text" placeholder="Telefono" required="true">
 		</div>
 
 
 
 	<button type="submit" class="btn btn-default btn-block">
-	  <span class="glyphicon glyphicon-send"></span> Nuevo Establecimiento
+	  <span class="glyphicon glyphicon-edit"></span> Nuevo Establecimiento
 	</button>
 
 	</form>

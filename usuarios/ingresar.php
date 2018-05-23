@@ -1,7 +1,4 @@
 
-<!-- Nota: Lista de iconos de Bootstrap
- https://www.w3schools.com/icons/bootstrap_icons_glyphicons.asp
--->
 <div  class="container page-header text-center">
  <p>
  	<br>
@@ -26,6 +23,16 @@
 			</span>
 					<input class="form-control" id="clave" name="clave" type="password" placeholder="Contraseña" required="true">
 		</div>
+
+		<?php
+if (!isset($_COOKIE["login1"])) {
+    echo '		<div class="input-group">
+			<span class="input-group-addon">
+				<span class="glyphicon glyphicon-map-marker"></span>
+			</span>
+					<input class="form-control" id="ciudad_local" name="ciudad_local" type="text" placeholder="Ciudad Local"required="true">
+		</div>	';
+}?>
 
 	<button type="submit" class="btn btn-default btn-block">
 	  <span class="glyphicon glyphicon-send"></span> Enviar

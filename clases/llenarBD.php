@@ -19,7 +19,51 @@ $stmt = $db->query("INSERT INTO `tbltenderos` (`idTendero`, `nombre`, `ciudad`,`
 $stmt = $db->query("INSERT INTO `tblcliente` (`IdCliente`, `nombre`,  `ciudad`,`barrio`, `direccion`, `telefono`, `email`, `fkIdTendero`, `fkIdRol`) VALUES ('1234', 'Camilo', 'Medellin', 'Manrique', 'Cra 40', '24589633', 'carmilo@correo.com', '1010', '3');");
 
 //DATOS GERENTE
-$stmt = $db->query("INSERT INTO `tblgerente` (`IdGerente`, `nombre`, `ciudad`, `barrio`, `fkIdRol`) VALUES ('1011', 'Julio mario ', 'medellin', 'poblado', '4');");
+$stmt = $db->query("INSERT INTO `tblgerente` (`IdGerente`, `nombre`, `ciudad`, `barrio`, `fkIdRol`) VALUES ('1011', 'Julio mario ', 'Medellín', 'Poblado', '4');");
 
 //DATOS REPRESENTANTE
 $stmt = $db->query("INSERT INTO `tblrepresentante` (`IdRepresentante`, `nombre`, `ciudad`, `barrio`, `fkIdRol`) VALUES ('1012', 'Sandra', 'Medellin', 'Centro ', '5');");
+
+//DATOS PRODUCTOS
+$stmt = $db->query("INSERT INTO `tblproductos` (`CodProducto`, `nombreProducto`) VALUES ('01', 'Chorizo');");
+
+$stmt = $db->query("INSERT INTO `tblproductos` (`CodProducto`, `nombreProducto`) VALUES ('02', 'Mortadela');");
+
+$stmt = $db->query("INSERT INTO `tblproductos` (`CodProducto`, `nombreProducto`) VALUES ('03', 'Salami');");
+
+$stmt = $db->query("INSERT INTO `tblproductos` (`CodProducto`, `nombreProducto`) VALUES ('04', 'Costilla');");
+
+$stmt = $db->query("INSERT INTO `tblproductos` (`CodProducto`, `nombreProducto`) VALUES ('05', 'Morcilla');");
+
+$stmt = $db->query("INSERT INTO `tblproductos` (`CodProducto`, `nombreProducto`) VALUES ('06', 'Salchicha');");
+
+$stmt = $db->query("INSERT INTO `tblproductos` (`CodProducto`, `nombreProducto`) VALUES ('07', 'Salchichon');");
+
+//DATOS PRESENTACIÓN PRODUCTO
+$stmt = $db->query("INSERT INTO `tblpresenproducto` (`presentacion`, `precio`, `fkCodProducto`) VALUES ('300 gr', '4000', '01');");
+
+$stmt = $db->query("INSERT INTO `tblpresenproducto` (`presentacion`, `precio`, `fkCodProducto`) VALUES ('500 gr', '5300', '01');");
+
+$stmt = $db->query("INSERT INTO `tblpresenproducto` (`presentacion`, `precio`, `fkCodProducto`) VALUES ('250 gr', '3500', '02');");
+
+$stmt = $db->query("INSERT INTO `tblpresenproducto` (`presentacion`, `precio`, `fkCodProducto`) VALUES ('500 gr', '6000', '02');");
+
+$stmt = $db->query("INSERT INTO `tblpresenproducto` (`presentacion`, `precio`, `fkCodProducto`) VALUES ('50 gr', '4000', '03');");
+
+$stmt = $db->query("INSERT INTO `tblpresenproducto` (`presentacion`, `precio`, `fkCodProducto`) VALUES ('150 gr', '10000', '03');");
+
+$stmt = $db->query("INSERT INTO `tblpresenproducto` (`presentacion`, `precio`, `fkCodProducto`) VALUES ('500 gr', '10000', '04');");
+
+$stmt = $db->query("INSERT INTO `tblpresenproducto` (`presentacion`, `precio`, `fkCodProducto`) VALUES ('1000 gr', '18000', '04');");
+
+$stmt = $db->query("INSERT INTO `tblpresenproducto` (`presentacion`, `precio`, `fkCodProducto`) VALUES ('250 gr', '3000', '05');");
+
+$stmt = $db->query("INSERT INTO `tblpresenproducto` (`presentacion`, `precio`, `fkCodProducto`) VALUES ('500 gr', '5500', '05');");
+
+$stmt = $db->query("INSERT INTO `tblpresenproducto` (`presentacion`, `precio`, `fkCodProducto`) VALUES ('250 gr', '4000', '06');");
+
+$stmt = $db->query("INSERT INTO `tblpresenproducto` (`presentacion`, `precio`, `fkCodProducto`) VALUES ('500 gr', '7500', '06');");
+
+$stmt = $db->query("INSERT INTO `tblpresenproducto` (`presentacion`, `precio`, `fkCodProducto`) VALUES ('250 gr', '3000', '07');");
+
+$stmt = $db->query("INSERT INTO `tblpresenproducto` (`presentacion`, `precio`, `fkCodProducto`) VALUES ('500 gr', '5500', '07');");

@@ -26,10 +26,11 @@ telefono varchar(100));	");
 
 $stmt4 = $db->query("
 create table tblRol(
-IdRol int primary key,
+IdRol INT NOT NULL AUTO_INCREMENT,
 usuario varchar(20),
 clave varchar(10),
-rol varchar(1)
+rol varchar(1),
+PRIMARY KEY (`IdRol`)
 );");
 
 $stmt5 = $db->query("
@@ -83,8 +84,15 @@ barrio varchar(100),
 fkIdRol int,
 constraint fk_r5 foreign key (fkIdRol) references tblRol (IdRol));");
 
-if (!$stmt1 || !$stmt2) {
-    echo " Error en crear tabla.";
-} else {
-    echo "tabla creada";
-}
+$stmt10 = $db->query("
+create table tblEncuesta(
+IdCliente int primary key,
+nombre varchar(100),
+respuesta1 varchar(100),
+respuesta2 varchar(100),
+respuesta3 varchar(100),
+respuesta4 varchar(100),
+respuesta5 varchar(100),
+respuesta6 varchar(100),
+respuesta7 varchar(100),
+respuesta8 varchar(100));");

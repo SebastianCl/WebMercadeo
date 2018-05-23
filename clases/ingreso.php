@@ -31,6 +31,7 @@ if (isset($_COOKIE['login1'])) {
                         $sql = "SELECT * FROM tblTenderos WHERE fkIdRol = '" . $tbl["IdRol"] . "'";
                         include 'clases/cookies_usuario.php';
                         setcookie("rol", "T", time() + 604800);
+                        setcookie("idTendero", $tbl2["idTendero"], time() + 604800);
                         header("Location: index_.php");
                         break;
 
@@ -63,15 +64,16 @@ if (isset($_COOKIE['login1'])) {
     } else {
         require_once "usuarios/menuAdmin.php";
     }
-//si no se ha creado el administrador hace lo siguiente:
+//si no se ha creado, el administrador hace lo siguiente:
 } else {
     if (!isset($_SESSION["Login1"])) {
         $_SESSION['Usuario'] = $_POST['usuario'];
         $_SESSION['Clave']   = $_POST['clave'];
-        $Clave               = $clave;
+        $ciudad_local        = $_POST['ciudad_local'];
 
         if (isset($_SESSION['Clave']) && isset($_SESSION['Clave'])) {
             setcookie('login1', 'ok', time() + 604800);
+            setcookie("ciudadPC", $ciudad_local, time() + 604800);
             $usuario_default = "admin";
             $clave_default   = "1";
 

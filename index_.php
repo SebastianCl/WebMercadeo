@@ -52,6 +52,51 @@ if (isset($_GET['menu'])) {
     if ($_GET['menu'] == 'registrarCliente') {
         require_once 'usuarios/FormularioCliente.php';
     }
+    if ($_GET['menu'] == 'registrarGerente') {
+        require_once 'usuarios/FormularioGerente.php';
+    }
+    if ($_GET['menu'] == 'registrarAdministrador') {
+        require_once 'usuarios/FormularioAdministrador.php';
+    }
+
+    if ($_GET['menu'] == 'registrarRepresentante') {
+        require_once 'usuarios/FormularioRepresentante.php';
+    }
+
+    if ($_GET['menu'] == 'consultas') {
+        require_once 'usuarios/consultas.php';
+    }
+    if ($_GET['menu'] == 'consultarEstablecimiento') {
+        require_once 'usuarios/consulta_establecimientos.php';
+    }
+    if ($_GET['menu'] == 'consultarTendero') {
+        require_once 'usuarios/consulta_tenderos.php';
+    }
+
+    if ($_GET['menu'] == 'consultarCliente') {
+        require_once 'usuarios/consulta_clientes.php';
+    }
+    if ($_GET['menu'] == 'consultarTendero') {
+        require_once 'usuarios/consulta_tenderos.php';
+    }
+    if ($_GET['menu'] == 'consultarGerente') {
+        require_once 'usuarios/consulta_gerentes.php';
+    }
+    if ($_GET['menu'] == 'consultarRepresentante') {
+        require_once 'usuarios/consulta_representantes.php';
+    }
+
+    if ($_GET['menu'] == 'consultarAdministrador') {
+        require_once 'usuarios/consulta_administradores.php';
+    }
+
+    if ($_GET['menu'] == 'consultarProductos') {
+        require_once 'usuarios/consulta_productos.php';
+    }
+
+    if ($_GET['menu'] == 'encuesta') {
+        require_once 'usuarios/encuestas.php';
+    }
 
     if ($_GET['menu'] == 'menuAdmin') {
         if (isset($_SESSION["Session"]) && $_SESSION["Session"] != null) {
@@ -61,39 +106,15 @@ if (isset($_GET['menu'])) {
             echo "alert('Inicie Session').";
         }
     }
-    /*if ($_GET['menu'] == 'administrador') {
-        if (isset($_SESSION["Session"]) && $_SESSION["Session"] != null) {
-            require_once 'usuarios/administrador.php';
-        } else {
-            echo "alert('Inicie Session')";
-            header("Location: index_.php");
-
-        }
-    }
-    if ($_GET['menu'] == 'Eliminar_Ciudad') {
-        if (isset($_SESSION["Session"]) && $_SESSION["Session"] != null) {
-            require_once 'usuarios/Eliminar_Ciudad.php';
-        } else {
-            header("Location: index_.php");
-
-            echo "<script>alert('Inicie Session').<script>";}
-    }
-    if ($_GET['menu'] == 'Editar_Ciudad') {
-        if (isset($_SESSION["Session"]) && $_SESSION["Session"] != null) {
-            require_once 'usuarios/Editar_Ciudad.php';
-        } else {
-            header("Location: index_.php");
-        }
-    }*/
     if ($_GET['menu'] == 'cerrar') {
         require_once 'clases/cerrar.php';
         header("Location: index_.php");
     }
     if ($_GET['menu'] == 'crearBD') {
-        include_once "clases/crearBD.php";        
+        include_once "clases/crearBD.php";
         include_once "clases/CreaTablaBD.php";
         include_once "clases/llenarBD.php";
-        require_once 'clases/cerrar.php';        
+        require_once 'clases/cerrar.php';
         header("Location: index_.php");
     }
 }

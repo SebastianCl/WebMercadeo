@@ -14,6 +14,19 @@
 					</a>
 				</li>
 <!-------------------------------------------------------------------------------------------------------->
+				<li li class="active">
+						<?php
+
+if (isset($_SESSION["Session"])) {
+    ?>
+						<a href="#"><span class="glyphicon glyphicon-info-sign"></span>
+							<?php
+echo "Ciudad Local: " . $_COOKIE["ciudadPC"];
+    ?>
+						</a>
+						<?PHP }?>
+					</li>
+<!-------------------------------------------------------------------------------------------------------->
 				<li>
 						<?php
 
@@ -54,6 +67,38 @@ if (isset($_COOKIE["rol"]) && $_COOKIE["rol"] == "A" && isset($_SESSION["Session
 	</li>
 
 <!-------------------------------------------------------------------------------------------------------->
+	<li>
+		<?php
+
+if (isset($_COOKIE["rol"]) && $_COOKIE["rol"] == "C" && isset($_SESSION["Session"])) {?>
+		<a href="?menu=consultarProductos"><span class="glyphicon glyphicon-th-list"></span>
+			Productos
+		</a>
+		<?PHP }?>
+	</li>
+
+<!-------------------------------------------------------------------------------------------------------->
+	<li>
+		<?php
+
+if (isset($_COOKIE["rol"]) && $_COOKIE["rol"] == "C" && isset($_SESSION["Session"])) {?>
+		<a href="?menu=encuesta"><span class="glyphicon glyphicon-list-alt"></span>
+			Encuesta
+		</a>
+		<?PHP }?>
+	</li>
+
+<!-------------------------------------------------------------------------------------------------------->
+	<li>
+		<?php
+
+if (isset($_COOKIE["rol"]) && $_COOKIE["rol"] == "T" && isset($_SESSION["Session"])) {?>
+		<a href="?menu=registrarCliente"><span class="glyphicon glyphicon-plus"></span>
+			Registrar Clientes
+		</a>
+		<?PHP }?>
+	</li>
+<!-------------------------------------------------------------------------------------------------------->
 
 	<li>
 		<?php
@@ -62,7 +107,13 @@ if (isset($_SESSION["Session"])) {
     ?>
 		<a href="#"><span class="glyphicon glyphicon-time"></span>
 		<?PHP
-echo $_COOKIE["admin"]; ?>
+if (isset($_COOKIE["admin"])) {
+        echo $_COOKIE["admin"];
+    } else {
+        $fecha = date("d/m/y | H:i:s");
+        echo $fecha;
+    }
+    ?>
 		</a>
 		<?PHP }?>
 	</li>
@@ -127,13 +178,12 @@ if (isset($_SESSION["Login1"])) {?>
 		<?php
 
 if (isset($_SESSION["Login1"])) {?>
-		<a href="?menu=crearBD"><span class="glyphicon glyphicon-user"></span>
+		<a href="?menu=crearBD"><span class="glyphicon glyphicon-compressed"></span>
 			Crear Base de datos
 		</a>
 		<?PHP }?>
 	</li>
 <!-------------------------------------------------------------------------------------------------------->
-
 
 
 			</ul>
