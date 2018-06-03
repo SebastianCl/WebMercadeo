@@ -106,6 +106,14 @@ if (isset($_GET['menu'])) {
             echo "alert('Inicie Session').";
         }
     }
+    if ($_GET['menu'] == 'menuTendero') {
+        if (isset($_SESSION["Session"]) && $_SESSION["Session"] != null) {
+            require_once 'usuarios/menuTendero.php';
+        } else {
+            header("Location: index_.php");
+            echo "alert('Inicie Session').";
+        }
+    }
     if ($_GET['menu'] == 'cerrar') {
         require_once 'clases/cerrar.php';
         header("Location: index_.php");
@@ -130,18 +138,6 @@ else {
 </section>
 
 
-
-<!--El footer definirá el bloque en donde se mostrará el contenido tipo pie de página del sitio. -->
-<footer>
-    <div id="footer">
-        <div class="container text-center">
-            <?php
-include_once 'capas/footer.php';
-
-?>
-        </div>
-    </div>
-</footer>
 
 
 </body>

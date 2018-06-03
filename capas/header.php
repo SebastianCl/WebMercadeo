@@ -93,8 +93,8 @@ if (isset($_COOKIE["rol"]) && $_COOKIE["rol"] == "C" && isset($_SESSION["Session
 		<?php
 
 if (isset($_COOKIE["rol"]) && $_COOKIE["rol"] == "T" && isset($_SESSION["Session"])) {?>
-		<a href="?menu=registrarCliente"><span class="glyphicon glyphicon-plus"></span>
-			Registrar Clientes
+		<a href="?menu=menuTendero"><span class="glyphicon glyphicon-tasks"></span>
+			Menu
 		</a>
 		<?PHP }?>
 	</li>

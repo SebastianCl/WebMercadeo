@@ -49,6 +49,12 @@
 			</span>
 					<input class="form-control" id="Telefono" name="Telefono" type="text" placeholder="Telefono" required="true">
 		</div>
+		<div class="input-group">
+			<span class="input-group-addon">
+				<span class="glyphicon glyphicon-edit"></span>
+			</span>
+					<input class="form-control" id="Establecimiento" name="Establecimiento" type="text" placeholder="Establecimiento" required="true">
+		</div>
 
 
 
