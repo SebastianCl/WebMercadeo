@@ -4,7 +4,7 @@ nombreProducto varchar(100));
 
 
 create table tblPresenProducto(
-codigoPP varchar(10),
+codigoPP varchar(10) primary key,
 presentacion varchar(20),
 precio varchar(20),
 fkCodProducto int,
@@ -35,10 +35,10 @@ nombre varchar(100),
 ciudad varchar(100),
 barrio varchar(100),
 direccion varchar(100),
-fkIdRol int,
 fkCodEstabl varchar(100),
-constraint fk_r1 foreign key (fkIdRol) references tblRol (IdRol),
-constraint fk_r2 foreign key (fkCodEstabl) references tblEstablecimiento (CodEstabl));
+fkIdRol int,
+constraint fk_code foreign key (fkCodEstabl) references tblEstablecimiento (CodEstabl),
+constraint fk_r1 foreign key (fkIdRol) references tblRol (IdRol));
 
 
 create table tblCliente(
@@ -93,3 +93,20 @@ respuesta5 varchar(100),
 respuesta6 varchar(100),
 respuesta7 varchar(100),
 respuesta8 varchar(100));
+
+create table tblVenta(
+codVenta int primary key AUTO_INCREMENT,
+fkIdTendero varchar(100) NOT NULL,
+fecha datetime, 
+estado bit DEFAULT 1, 
+constraint fk_CT foreign key (fkIdTendero) references tblTenderos (idTendero));
+
+create table tblDetalleVenta(
+fkCodVenta int NOT NULL,
+fkCodigoPP  varchar(10) NOT NULL,
+cantidad int,
+constraint fk_prep foreign key (fkCodigoPP) references tblPresenProducto (CodigoPP),
+constraint fk_pedido foreign key (fkCodPedido) references tblPedido (codPedido));
+
+
+

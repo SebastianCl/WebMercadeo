@@ -17,6 +17,14 @@
 
 		<div class="input-group">
 			<span class="input-group-addon">
+				<span class="glyphicon glyphicon-user"></span>
+			</span>
+					<input class="form-control" id="usuarioTendero" name="usuarioTendero" type="text" placeholder="Nombre de usuario" required="true">
+		</div>
+
+
+		<div class="input-group">
+			<span class="input-group-addon">
 				<span class="glyphicon glyphicon-asterisk"></span>
 			</span>
 					<input class="form-control" id="clave" name="clave" type="password" placeholder="Contraseña" required="true">
@@ -35,6 +43,13 @@
 			</span>
 					<input class="form-control" id="Cuidad" name="Cuidad" type="text" placeholder="Cuidad" required="true">
 		</div>
+		<div class="input-group">
+			<span class="input-group-addon">
+				<span class="glyphicon glyphicon-map-marker"></span>
+			</span>
+					<input class="form-control" id="Barrio" name="Barrio" type="text" placeholder="Barrio" required="true">
+		</div>
+
 
 		<div class="input-group">
 			<span class="input-group-addon">
@@ -42,19 +57,13 @@
 			</span>
 					<input class="form-control" id="Direccion" name="Direccion" type="text" placeholder="Direccion" required="true">
 		</div>
-
-		<div class="input-group">
-			<span class="input-group-addon">
-				<span class="glyphicon glyphicon-edit"></span>
-			</span>
-					<input class="form-control" id="Telefono" name="Telefono" type="text" placeholder="Telefono" required="true">
-		</div>
 		<div class="input-group">
 			<span class="input-group-addon">
 				<span class="glyphicon glyphicon-edit"></span>
 			</span>
 					<input class="form-control" id="Establecimiento" name="Establecimiento" type="text" placeholder="Establecimiento" required="true">
 		</div>
+		<br/>
 
 
 

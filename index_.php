@@ -97,6 +97,12 @@ if (isset($_GET['menu'])) {
     if ($_GET['menu'] == 'encuesta') {
         require_once 'usuarios/encuestas.php';
     }
+    if ($_GET['menu'] == 'pedido') {
+        require_once 'usuarios/FormularioPedido.php';
+    }
+    if ($_GET['menu'] == 'registrarVentas') {
+        require_once 'usuarios/FormularioVentas.php';
+    }
 
     if ($_GET['menu'] == 'menuAdmin') {
         if (isset($_SESSION["Session"]) && $_SESSION["Session"] != null) {

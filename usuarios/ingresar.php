@@ -24,15 +24,12 @@
 					<input class="form-control" id="clave" name="clave" type="password" placeholder="Contraseña" required="true">
 		</div>
 
-		<?php
-if (!isset($_COOKIE["login1"])) {
-    echo '		<div class="input-group">
+		<div class="input-group">
 			<span class="input-group-addon">
 				<span class="glyphicon glyphicon-map-marker"></span>
 			</span>
 					<input class="form-control" id="ciudad_local" name="ciudad_local" type="text" placeholder="Ciudad Local"required="true">
-		</div>	';
-}?>
+		</div>
 
 	<button type="submit" class="btn btn-default btn-block">
 	  <span class="glyphicon glyphicon-send"></span> Enviar

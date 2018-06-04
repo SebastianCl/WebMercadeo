@@ -10,7 +10,7 @@ nombreProducto varchar(100));");
 
 $stmt2 = $db->query("
 create table tblPresenProducto(
-codigoPP varchar(10),
+codigoPP varchar(10) primary key,
 presentacion varchar(20),
 precio varchar(20),
 fkCodProducto int,
@@ -99,3 +99,19 @@ respuesta5 varchar(100),
 respuesta6 varchar(100),
 respuesta7 varchar(100),
 respuesta8 varchar(100));");
+
+$stmt11 = $db->query("
+create table tblVenta(
+codVenta int primary key AUTO_INCREMENT,
+fkIdTendero varchar(100) NOT NULL,
+fecha date,
+estado bit DEFAULT 1,
+constraint fk_CT foreign key (fkIdTendero) references tblTenderos (idTendero));");
+
+$stmt12 = $db->query("
+create table tblDetalleVenta(
+fkCodVenta int NOT NULL,
+fkCodigoPP  varchar(10) NOT NULL,
+cantidad int,
+constraint fk_venta foreign key (fkCodVenta) references tblVenta (codVenta),
+constraint fk_prep foreign key (fkCodigoPP) references tblPresenProducto (CodigoPP));");

@@ -19,7 +19,7 @@
 			<span class="input-group-addon">
 				<span class="glyphicon glyphicon-lock"></span>
 			</span>
-					<input class="form-control" id="nit" name="nit" type="number" min="0" placeholder="NIT" required="true">
+					<input class="form-control" id="codEstabl" name="codEstabl" type="number" min="0" placeholder="Establezca un código" required="true">
 		</div>
 
 		<div class="input-group">
