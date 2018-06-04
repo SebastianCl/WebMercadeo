@@ -5,19 +5,17 @@ try {
     include "conexion.php";
 
     $idTendero = $_COOKIE["idTendero"];
-    $sql       = "SELECT fecha FROM tblventa WHERE fkIdTendero = '$idTendero' ORDER BY fecha";
+    $sql       = "SELECT fecha FROM tblventa WHERE fkIdTendero = '$idTendero' ORDER BY fecha DESC";
     $result    = $db->query($sql);
-    $rowf      = $result->fetch_assoc();
-    $fechat    = $rowf['fecha'];
-    echo "<script>alert('$fechat');</script>";
-    if ($fechat == NOW()) {
-        echo "<script> alert('Increible');</script>";
-    }
-    if ($result->num_rows > 0) {
-        echo "<script> alert('Lo sentimos, ya ha realizado un reporte de ventas');location.href ='../index_.php?menu=registrarVentas';</script>";
-
+    $rowF      = $result->fetch_assoc();
+    $fechaT    = $rowF['fecha'];
+    date_default_timezone_set("America/Mexico_City");
+    $fechaA = date("Y-m-d");
+    //$fechaA    = str_replace("/", "-", $fechaA);
+    echo ("<script>alert('$fechaA | $fechaT')</script>");
+    if ($fechaT == $fechaA) {
+        echo "<script> alert('Ya haz realizado el reporte de ventas diario');location.href ='../index_.php?menu=registrarVentas';</script>";
     } else {
-
         $sql    = "INSERT INTO `tblVenta` (`codVenta`, `fkIdTendero`, `fecha`) VALUES (NULL, $idTendero, SYSDATE())";
         $result = $db->query($sql);
         if ($result) {
@@ -125,9 +123,14 @@ try {
                     $stmt->bind_param('isi', $codVenta, $cp, $cantG2);
                     $stmt->execute();
                 }
+                if (!$stmt) {
+                    echo "<script> alert('Error al guardar los datos'); location.href ='../index_.php?menu=registrarVentas';</script>";
+                } else {
+                    echo "<script> alert('Ventas Registradas'); location.href ='../index_.php?menu=registrarVentas';</script>";
+                }
                 $sql    = "UPDATE `tblVenta` SET `estado` = b'0' WHERE `tblVenta`.`estado` = '1';";
                 $result = $db->query($sql);
-                echo "<script> alert('Venta registrada'); location.href ='../index_.php?menu=registrarVentas';</script>";
+
             } else {
                 echo "<script> alert('Error, no se pudo registrar las ventas'); location.href ='../index_.php?menu=registrarVentas';</script>";
             }

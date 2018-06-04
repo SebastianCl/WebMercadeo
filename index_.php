@@ -103,6 +103,12 @@ if (isset($_GET['menu'])) {
     if ($_GET['menu'] == 'registrarVentas') {
         require_once 'usuarios/FormularioVentas.php';
     }
+    if ($_GET['menu'] == 'fechaVentas') {
+        require_once 'usuarios/FormularioFechas.php';
+    }
+    if ($_GET['menu'] == 'editarVenta') {
+        require_once 'usuarios/FormularioEditarVenta.php';
+    }
 
     if ($_GET['menu'] == 'menuAdmin') {
         if (isset($_SESSION["Session"]) && $_SESSION["Session"] != null) {

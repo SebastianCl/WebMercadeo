@@ -39,6 +39,7 @@ if (isset($_COOKIE['login1'])) {
                         $sql = "SELECT * FROM tblCliente WHERE fkIdRol = '" . $tbl["IdRol"] . "'";
                         include 'clases/cookies_usuario.php';
                         setcookie("rol", "C", time() + 604800);
+                        setcookie("idCliente", $tbl2["idCliente"], time() + 604800);
                         header("Location: index_.php");
                         break;
                     case 'G':
