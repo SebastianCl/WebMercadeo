@@ -4,50 +4,54 @@ try {
     $idTendero       = $_POST['idTendero'];
     $Establecimiento = $_POST['Establecimiento'];
 
-    $nombre = "mercadeo";
     include "conexion.php";
 
-    $sql    = "SELECT * FROM tblRol WHERE usuario = '" . $usuarioTendero . "'";
-    $result = $db->query($sql);
-    if ($result->num_rows > 0) {
-        echo "<script> alert('NO HUBO REGISTRO | El nombre de usuario ya se encuentra registrado');location.href ='../index_.php?menu=registrarTendero';</script>";
+    $sql       = "SELECT * FROM tblRol WHERE usuario = '" . $usuarioTendero . "'";
+    $result    = mysql_query($sql, $db);
+    $num_filas = mysql_num_rows($result);
+    if ($num_filas > 0) {
+        echo "<script> alert('NO HUBO REGISTRO | El nombre de usuario ya se encuentra registrado');location.href ='../index.php?menu=registrarTendero';</script>";
     } else {
-        $sql    = "SELECT * FROM tbltenderos WHERE IdTendero = '" . $idTendero . "'";
-        $result = $db->query($sql);
-        if ($result->num_rows > 0) {
-            echo "<script> alert('NO HUBO REGISTRO | Ya existe un tendero con esa identificación');location.href ='../index_.php?menu=registrarTendero';</script>";
+        $sql       = "SELECT * FROM tbltenderos WHERE IdTendero = '" . $idTendero . "'";
+        $result    = mysql_query($sql, $db);
+        $num_filas = mysql_num_rows($result);
+        if ($num_filas > 0) {
+            echo "<script> alert('NO HUBO REGISTRO | Ya existe un tendero con esa identificación');location.href ='../index.php?menu=registrarTendero';</script>";
         } else {
-            $sql    = "SELECT * FROM tblEstablecimiento WHERE CodEstabl = '" . $Establecimiento . "'";
-            $result = $db->query($sql);
-            if ($result->num_rows > 0) {
-                $clave = $_POST['clave'];
-                $idRol = null;
-                $rol   = "T";
-                $stmt  = $db->prepare("insert into tblRol values (?,?,?,?)");
-                $stmt->bind_param('isss', $idRol, $usuarioTendero, $clave, $rol);
-                $stmt->execute();
-                $sql    = "SELECT * FROM tblRol WHERE usuario =  '" . $usuarioTendero . "'";
-                $result = $db->query($sql);
-                if ($result->num_rows > 0) {
-                    $tbl   = $result->fetch_assoc();
+            $sql       = "SELECT * FROM tblEstablecimiento WHERE CodEstabl = '" . $Establecimiento . "'";
+            $result    = mysql_query($sql, $db);
+            $num_filas = mysql_num_rows($result);
+            if ($num_filas > 0) {
+                $clave_tendero = $_POST['clave'];
+                $idRol         = null;
+                $rol           = "T";
+                $sql           = "insert into tblRol (usuario,clave,rol) values ('$usuarioTendero', '$clave_tendero', '$rol')";
+                $stmt          = mysql_query($sql, $db);
+
+                $sql       = "SELECT * FROM tblRol WHERE usuario =  '" . $usuario_gerente . "'";
+                $result    = mysql_query($sql, $db);
+                $num_filas = mysql_num_rows($result);
+                if ($num_filas > 0) {
+                    $tbl   = mysql_fetch_array($result);
                     $idRol = $tbl["IdRol"];
+                } else {
+                    echo "<script> alert('Error al insertar representante');location.href ='../index.php?menu=registrarTendero';</script>";
                 }
                 $nombre_tendero = $_POST['nombre'];
                 $Cuidad         = $_POST['Cuidad'];
                 $Barrio         = $_POST['Barrio'];
                 $Direccion      = $_POST['Direccion'];
-                $stmt           = $db->prepare("insert into tbltenderos values(?,?,?,?,?,?,?);");
 
-                $stmt->bind_param('sssssis', $idTendero, $nombre_tendero, $Cuidad, $Barrio, $Direccion, $idRol, $Establecimiento);
-                $stmt->execute();
+                $sql  = "INSERT INTO tblRepresentante VALUES('$idTendero', '$nombre_tendero', '$Cuidad', '$Barrio', '$Direccion', '$idRol', '$Establecimiento', '$idRol');";
+                $stmt = mysql_query($sql, $db);
 
                 if (!$stmt) {
-                    echo "<br>Error en al insertar datos en la base de datos";
+                    echo "<script> alert('Error al insertar datos en la base de datos');location.href ='../index.php?menu=registrarTendero';</script>";
                 } else {
-                    echo "<script> alert('Registro hecho'); location.href ='../index_.php?menu=registrarTendero'; </script>";
+                    echo "<script> alert('Registro hecho'); location.href ='../index.php?menu=registrarTendero'; </script>";
                 }
             } else {
-                echo "<script> alert('NO HUBO REGISTRO | No existe el establecimiento');location.href ='../index_.php?menu=registrarTendero';</script>";
+                echo "<script> alert('NO HUBO REGISTRO | No existe el establecimiento');location.href ='../index.php?menu=registrarTendero';</script>";
             }
 
         }
@@ -55,6 +59,6 @@ try {
     }
 
 } catch (Exception $e) {
-    echo "<script> alert('Ocurrio un error , $e');location.href ='../index_.php?menu=registrarTendero';</script>";
+    echo "<script> alert('Ocurrio un error , $e');location.href ='../index.php?menu=registrarTendero';</script>";
 
 }

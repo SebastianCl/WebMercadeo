@@ -95,7 +95,19 @@ if (isset($_GET['menu'])) {
     }
 
     if ($_GET['menu'] == 'encuesta') {
-        require_once 'usuarios/encuestas.php';
+        include "clases/conexion.php";
+        $idCliente = $_COOKIE["idCliente"];
+        $sql       = "select fkIdCliente from tblEncuesta where fkIdCliente = '" . $idCliente . "'";
+        $result    = mysql_query($sql, $db);
+        $num_filas = mysql_num_rows($result);
+        if (!$num_filas > 0) {
+            mysql_close($db);
+            require_once 'usuarios/encuestas.php';
+        } else {
+            mysql_close($db);
+            echo "<script> alert('Ya has realizado la encuesta');location.href ='../index.php';</script>";
+        }
+
     }
     if ($_GET['menu'] == 'pedido') {
         require_once 'usuarios/FormularioPedido.php';
@@ -117,7 +129,7 @@ if (isset($_GET['menu'])) {
         if (isset($_SESSION["Session"]) && $_SESSION["Session"] != null) {
             require_once 'usuarios/menuAdmin.php';
         } else {
-            header("Location: index_.php");
+            header("Location: index.php");
             echo "alert('Inicie Session').";
         }
     }
@@ -125,21 +137,15 @@ if (isset($_GET['menu'])) {
         if (isset($_SESSION["Session"]) && $_SESSION["Session"] != null) {
             require_once 'usuarios/menuTendero.php';
         } else {
-            header("Location: index_.php");
+            header("Location: index.php");
             echo "alert('Inicie Session').";
         }
     }
     if ($_GET['menu'] == 'cerrar') {
         require_once 'clases/cerrar.php';
-        header("Location: index_.php");
+        header("Location: index.php");
     }
-    if ($_GET['menu'] == 'crearBD') {
-        include_once "clases/crearBD.php";
-        include_once "clases/CreaTablaBD.php";
-        include_once "clases/llenarBD.php";
-        require_once 'clases/cerrar.php';
-        header("Location: index_.php");
-    }
+
 }
 //si menu no esta definido
 else {

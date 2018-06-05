@@ -16,14 +16,14 @@
     </thead>
     <tbody>
 <?php
-$nombre = "mercadeo";
+
 include "clases/conexion.php";
 
-$sql    = "SELECT * FROM tblGerente";
-$result = $db->query($sql);
-
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
+$sql       = "select * from tblGerente";
+$result    = mysql_query($sql, $db);
+$num_filas = mysql_num_rows($result);
+if ($num_filas > 0) {
+    while ($row = mysql_fetch_array($result)) {
         ?>
         <tr>
           <td> <?php echo $row["IdGerente"] ?></td>

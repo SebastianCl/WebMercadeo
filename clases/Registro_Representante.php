@@ -1,50 +1,51 @@
 <?php
-//Archivo para las clases PHP necesarias en el sitio web
 $idRol                 = null;
 $usuario_representante = $_POST["usuario_representante"];
 $clave_representante   = $_POST["clave_representante"];
 $rol                   = "R";
 
 if (isset($usuario_representante) && isset($clave_representante)) {
-    $nombre = "mercadeo";
+
     include "conexion.php";
-    $sql    = "SELECT * FROM tblRol WHERE usuario = '" . $usuario_representante . "'";
-    $result = $db->query($sql);
-    if ($result->num_rows > 0) {
-        echo "<script> alert('NO HUBO REGISTRO | El nombre de usuario ya se encuentra registrado');location.href ='../index_.php?menu=registrarRepresentante';</script>";
+    $sql       = "SELECT * FROM tblRol WHERE usuario = '" . $usuario_representante . "'";
+    $result    = mysql_query($sql, $db);
+    $num_filas = mysql_num_rows($result);
+    if ($num_filas > 0) {
+        echo "<script> alert('NO HUBO REGISTRO | El nombre de usuario ya se encuentra registrado');location.href ='../index.php?menu=registrarRepresentante';</script>";
     } else {
 
         $idRepresentante = $_POST['idrepresentante'];
         $sql             = "SELECT * FROM tblrepresentante WHERE IdRepresentante = '" . $idRepresentante . "'";
-        $result          = $db->query($sql);
-        if ($result->num_rows > 0) {
-            echo "<script> alert('NO HUBO REGISTRO | Ya existe un representante con esa identificación');location.href ='../index_.php?menu=registrarRepresentante';</script>";
+        $result          = mysql_query($sql, $db);
+        $num_filas       = mysql_num_rows($result);
+        if ($num_filas > 0) {
+            echo "<script> alert('NO HUBO REGISTRO | Ya existe un representante con esa identificación');location.href ='../index.php?menu=registrarRepresentante';</script>";
         } else {
-            $stmt = $db->prepare("insert into tblRol values (?,?,?,?)");
-            $stmt->bind_param('isss', $idRol, $usuario_representante, $clave_representante, $rol);
-            $stmt->execute();
-            $sql    = "SELECT * FROM tblRol WHERE usuario =  '" . $usuario_representante . "'";
-            $result = $db->query($sql);
-            if ($result->num_rows > 0) {
-                $tbl   = $result->fetch_assoc();
-                $idRol = $tbl["IdRol"];
-            }
+            $sql  = "insert into tblRol (usuario,clave,rol) values ('$usuario_representante', '$clave_representante', '$rol')";
+            $stmt = mysql_query($sql, $db);
 
+            $sql       = "SELECT * FROM tblRol WHERE usuario =  '" . $usuario_gerente . "'";
+            $result    = mysql_query($sql, $db);
+            $num_filas = mysql_num_rows($result);
+            if ($num_filas > 0) {
+                $tbl   = mysql_fetch_array($result);
+                $idRol = $tbl["IdRol"];
+            } else {
+                echo "<script> alert('Error al insertar representante');location.href ='../index.php?menu=registrarRepresentante';</script>";
+            }
             $nombre_representante = $_POST['nombre_representante'];
             $Ciudad               = $_POST['ciudad'];
             $Barrio               = $_POST['barrio'];
 
             if (isset($idRepresentante) && isset($nombre_representante) && isset($Ciudad) && isset($Barrio)) {
 
-                $stmt5 = $db->prepare("insert into tblrepresentante values(?,?,?,?,?);");
+                $sql  = "INSERT INTO tblRepresentante VALUES('$idRepresentante', '$nombre_representante', '$Ciudad', '$Barrio', '$idRol');";
+                $stmt = mysql_query($sql, $db);
 
-                $stmt5->bind_param('ssssi', $idRepresentante, $nombre_representante, $Ciudad, $Barrio, $idRol);
-                $stmt5->execute();
-
-                if (!$stmt5) {
-                    echo "<br>Error en al insertar datos en la base de datos";
+                if (!$stmt) {
+                    echo "<script> alert('Error al insertar datos en la base de datos');location.href ='../index.php?menu=registrarRepresentante';</script>";
                 } else {
-                    echo "<script> alert('Registro hecho');location.href ='../index_.php?menu=registrarGerente';</script>";
+                    echo "<script> alert('Registro hecho');location.href ='../index.php?menu=registrarRepresentante';</script>";
                 }
             }
         }

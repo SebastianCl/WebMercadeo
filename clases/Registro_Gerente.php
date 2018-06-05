@@ -5,29 +5,34 @@ $clave_gerente   = $_POST["clave_gerente"];
 $rol             = "G";
 
 if (isset($usuario_gerente) && isset($clave_gerente)) {
-    $nombre = "mercadeo";
+
     include "conexion.php";
-    $sql    = "SELECT * FROM tblRol WHERE usuario = '" . $usuario_gerente . "'";
-    $result = $db->query($sql);
-    if ($result->num_rows > 0) {
-        echo "<script> alert('NO HUBO REGISTRO | El nombre de usuario ya se encuentra registrado');location.href ='../index_.php?menu=registrarGerente';</script>";
+    $sql       = "SELECT * FROM tblRol WHERE usuario = '" . $usuario_gerente . "'";
+    $result    = mysql_query($sql, $db);
+    $num_filas = mysql_num_rows($result);
+    if ($num_filas > 0) {
+        echo "<script> alert('NO HUBO REGISTRO | El nombre de usuario ya se encuentra registrado');location.href ='../index.php?menu=registrarGerente';</script>";
     } else {
 
         $idGerente = $_POST['idGerente'];
         $sql       = "SELECT * FROM tblGerente WHERE IdGerente = '" . $idGerente . "'";
-        $result    = $db->query($sql);
-        if ($result->num_rows > 0) {
-            echo "<script> alert('NO HUBO REGISTRO | Ya existe un gerente con esa identificación');location.href ='../index_.php?menu=registrarGerente';</script>";
+        $result    = mysql_query($sql, $db);
+        $num_filas = mysql_num_rows($result);
+        if ($num_filas > 0) {
+            echo "<script> alert('NO HUBO REGISTRO | Ya existe un gerente con esa identificación');location.href ='../index.php?menu=registrarGerente';</script>";
         } else {
 
-            $stmt = $db->prepare("insert into tblRol values (?,?,?,?)");
-            $stmt->bind_param('isss', $idRol, $usuario_gerente, $clave_gerente, $rol);
-            $stmt->execute();
-            $sql    = "SELECT * FROM tblRol WHERE usuario =  '" . $usuario_gerente . "'";
-            $result = $db->query($sql);
-            if ($result->num_rows > 0) {
-                $tbl   = $result->fetch_assoc();
+            $sql  = "insert into tblRol (usuario,clave,rol) values ('$usuario_gerente', '$clave_gerente', '$rol')";
+            $stmt = mysql_query($sql, $db);
+
+            $sql       = "SELECT * FROM tblRol WHERE usuario =  '" . $usuario_gerente . "'";
+            $result    = mysql_query($sql, $db);
+            $num_filas = mysql_num_rows($result);
+            if ($num_filas > 0) {
+                $tbl   = mysql_fetch_array($result);
                 $idRol = $tbl["IdRol"];
+            } else {
+                echo "<script> alert('Error al insertar gerente');location.href ='../index.php?menu=registrarGerente';</script>";
             }
 
             $nombre_gerente = $_POST['nombre_gerente'];
@@ -36,15 +41,13 @@ if (isset($usuario_gerente) && isset($clave_gerente)) {
 
             if (isset($idGerente) && isset($nombre_gerente) && isset($Ciudad) && isset($Barrio)) {
 
-                $stmt5 = $db->prepare("insert into tblGerente values(?,?,?,?,?);");
+                $sql  = "INSERT INTO tblGerente VALUES('$idGerente', '$nombre_gerente', '$Ciudad', '$Barrio', '$idRol');";
+                $stmt = mysql_query($sql, $db);
 
-                $stmt5->bind_param('ssssi', $idGerente, $nombre_gerente, $Ciudad, $Barrio, $idRol);
-                $stmt5->execute();
-
-                if (!$stmt5) {
+                if (!$stmt) {
                     echo "<br>Error en al insertar datos en la base de datos";
                 } else {
-                    echo "<script> alert('Registro hecho');location.href ='../index_.php?menu=registrarGerente';</script>";
+                    echo "<script> alert('Registro hecho');location.href ='../index.php?menu=registrarGerente';</script>";
                 }
             }
         }
@@ -52,3 +55,4 @@ if (isset($usuario_gerente) && isset($clave_gerente)) {
     }
 
 }
+mysql_close($db);

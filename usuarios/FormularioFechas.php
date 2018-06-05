@@ -17,11 +17,13 @@ $fecha     = date('Y-m-j');
 $fecha_3   = strtotime('-3 day', strtotime($fecha));
 $fecha_3   = date('Y-m-j', $fecha_3);
 $idTendero = $_COOKIE["idTendero"];
-$sql       = "SELECT * FROM tblVenta WHERE fecha >= '$fecha_3' AND fkIdTendero = '$idTendero'";
-$result    = $db->query($sql);
 $fr        = 0;
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
+$sql       = "SELECT * FROM tblVenta WHERE fecha >= '$fecha_3' AND fkIdTendero = '$idTendero'";
+$result    = mysql_query($sql, $db);
+$num_filas = mysql_num_rows($result);
+if ($num_filas > 0) {
+
+    while ($row = mysql_fetch_array($result)) {
         $fechaRegistro = $row['fecha'];
         $codVenta      = $row['codVenta'];
         setcookie("codV", $codVenta, time() + 604800);

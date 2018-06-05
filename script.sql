@@ -83,16 +83,20 @@ constraint fk_r5 foreign key (fkIdRol) references tblRol (IdRol));
 
 
 create table tblEncuesta(
-IdCliente int primary key,
-nombre varchar(100),
+fkIdCliente int primary key,
 respuesta1 varchar(100),
 respuesta2 varchar(100),
 respuesta3 varchar(100),
 respuesta4 varchar(100),
 respuesta5 varchar(100),
+respuestasabor varchar(100),
+respuestacalidad varchar(100),
+respuestagramos varchar(100),
+respuestaempaque varchar(100),
 respuesta6 varchar(100),
 respuesta7 varchar(100),
-respuesta8 varchar(100));
+respuesta8 varchar(100),
+constraint fk_ec foreign key (fkIdCliente) references tblCliente (IdCliente));
 
 create table tblVenta(
 codVenta int primary key AUTO_INCREMENT,
@@ -121,4 +125,14 @@ fkCodigoPP  varchar(10) NOT NULL,
 cantidad int,
 constraint fk_pedido foreign key (fkCodPedido) references tblPedido (CodPedido),
 constraint fk_prep2 foreign key (fkCodigoPP) references tblPresenProducto (CodigoPP));
+
+
+
+create table tblVisita(
+fkIdUsuario int,
+fecha datetime,
+ciudad varchar(100),
+contVisitas int,
+constraint fk_vu foreign key (fkIdUsuario) references tblRol (IdRol));
+
 

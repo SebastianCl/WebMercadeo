@@ -9,7 +9,7 @@
     <thead>
       <tr>
         <th>Nombre</th>
-        <th>NIT</th>
+        <th>Codigo</th>
         <th>Ciudad</th>
         <th>Barrio</th>
         <th>Direccion</th>
@@ -18,18 +18,18 @@
     </thead>
     <tbody>
 <?php
-$nombre = "mercadeo";
+
 include "clases/conexion.php";
 
-$sql    = "SELECT * FROM tblEstablecimiento";
-$result = $db->query($sql);
-
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
+$sql       = "select * from tblEstablecimiento";
+$result    = mysql_query($sql, $db);
+$num_filas = mysql_num_rows($result);
+if ($num_filas > 0) {
+    while ($row = mysql_fetch_array($result)) {
         ?>
         <tr>
           <td> <?php echo $row["nombre"] ?></td>
-          <td> <?php echo $row["nit"] ?></td>
+          <td> <?php echo $row["codEstabl"] ?></td>
           <td> <?php echo $row["ciudad"] ?></td>
           <td> <?php echo $row["barrio"] ?></td>
           <td> <?php echo $row["direccion"] ?></td>

@@ -13,7 +13,7 @@
 					Inicio
 					</a>
 				</li>
-<!-------------------------------------------------------------------------------------------------------
+<!------------------------------------------------------------------------------------------------------->
 				<li li class="active">
 						<?php
 
@@ -21,12 +21,12 @@ if (isset($_SESSION["Session"])) {
     ?>
 						<a href="#"><span class="glyphicon glyphicon-info-sign"></span>
 							<?php
-echo "Ciudad Local: " . $_COOKIE["ciudadPC"];
+echo "Ciudad Local: " . $_COOKIE["ultima_ciudad"];
     ?>
 						</a>
 						<?PHP }?>
 					</li>
----------------------------------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------------------------------->
 				<li>
 						<?php
 
@@ -81,11 +81,14 @@ if (isset($_COOKIE["rol"]) && $_COOKIE["rol"] == "C" && isset($_SESSION["Session
 	<li>
 		<?php
 
-if (isset($_COOKIE["rol"]) && $_COOKIE["rol"] == "C" && isset($_SESSION["Session"])) {?>
+if (isset($_COOKIE["rol"]) && $_COOKIE["rol"] == "C" && isset($_SESSION["Session"])) {
+
+    ?>
 		<a href="?menu=encuesta"><span class="glyphicon glyphicon-list-alt"></span>
 			Encuesta
 		</a>
-		<?PHP }?>
+		<?PHP }
+?>
 	</li>
 
 <!-------------------------------------------------------------------------------------------------------->
@@ -107,12 +110,7 @@ if (isset($_SESSION["Session"])) {
     ?>
 		<a href="#"><span class="glyphicon glyphicon-time"></span>
 		<?PHP
-if (isset($_COOKIE["admin"])) {
-        echo $_COOKIE["admin"];
-    } else {
-        $fecha = date("d/m/y | H:i:s");
-        echo $fecha;
-    }
+echo $_COOKIE["ultima_fecha"];
     ?>
 		</a>
 		<?PHP }?>
@@ -163,16 +161,7 @@ if (isset($_SESSION["Session"])) {?>
 	<?PHP }?>
 	</li>
 <!-------------------------------------------------------------------------------------------------------->
-	<li>
-		<?php
 
-if (isset($_SESSION["Login1"])) {?>
-		<a href="?menu=crearBD"><span class="glyphicon glyphicon-compressed"></span>
-			Crear Base de datos
-		</a>
-		<?PHP }?>
-	</li>
-<!-------------------------------------------------------------------------------------------------------->
 
 
 			</ul>
