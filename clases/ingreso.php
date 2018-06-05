@@ -9,7 +9,7 @@ if (isset($_COOKIE['login1'])) {
             $nombre = "mercadeo";
             include "conexion.php";
 
-            $sql    = "SELECT * FROM tblRol where usuario ='" . $_SESSION['Usuario'] . "' and clave='" . $_SESSION['Clave'] . "'";
+            $sql    = "SELECT * FROM tblRol WHERE usuario ='" . $_SESSION['Usuario'] . "' and clave='" . $_SESSION['Clave'] . "'";
             $result = $db->query($sql);
             if ($result->num_rows > 0) {
                 $tbl     = $result->fetch_assoc();

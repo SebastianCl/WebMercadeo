@@ -97,7 +97,7 @@ respuesta8 varchar(100));
 create table tblVenta(
 codVenta int primary key AUTO_INCREMENT,
 fkIdTendero varchar(100) NOT NULL,
-fecha datetime, 
+fecha date, 
 estado bit DEFAULT 1, 
 constraint fk_CT foreign key (fkIdTendero) references tblTenderos (idTendero));
 
@@ -105,8 +105,20 @@ create table tblDetalleVenta(
 fkCodVenta int NOT NULL,
 fkCodigoPP  varchar(10) NOT NULL,
 cantidad int,
-constraint fk_prep foreign key (fkCodigoPP) references tblPresenProducto (CodigoPP),
-constraint fk_pedido foreign key (fkCodPedido) references tblPedido (codPedido));
+constraint fk_venta foreign key (fkCodVenta) references tblVenta (codVenta),
+constraint fk_prep foreign key (fkCodigoPP) references tblPresenProducto (CodigoPP));
 
+create table tblPedido(
+codPedido int primary key AUTO_INCREMENT,
+fkIdTendero varchar(100) NOT NULL,
+fecha date, 
+estado bit DEFAULT 1, 
+constraint fk_CT2 foreign key (fkIdTendero) references tblTenderos (idTendero));
 
+create table tblDetallePedido(
+fkCodPedido int NOT NULL,
+fkCodigoPP  varchar(10) NOT NULL,
+cantidad int,
+constraint fk_pedido foreign key (fkCodPedido) references tblPedido (CodPedido),
+constraint fk_prep2 foreign key (fkCodigoPP) references tblPresenProducto (CodigoPP));
 

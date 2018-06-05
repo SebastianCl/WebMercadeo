@@ -60,7 +60,23 @@ if (isset($usuario_cliente) && isset($clave_cliente)) {
                 if (!$stmt5) {
                     echo "<br>Error en al insertar datos en la base de datos";
                 } else {
-                    echo "<script> alert('Registro hecho'); location.href ='../index_.php?menu=registrarCliente';</script>";
+                    $para   = "sebastiancardona176745@correo.itm.edu.co";
+                    $asunto = "Bienvenido - " . $nombre_cliente;
+                    $header = "From: " . $email;
+                    $cuerpo = "
+                                Nombre: $nombre_cliente \n
+                                Ciudad: $Ciudad \n
+                                Barrio: $Barrio \n
+                                Direccion: $Direccion \n
+                                Telefono: $Telefono \n
+                                Email: $email \n ";
+
+                    if (mail($para, $asunto, $cuerpo, $header)) {
+                        echo "<script> alert('Registro hecho'); location.href ='../index_.php?menu=registrarCliente';</script>";
+                    } else {
+                        echo "<script> alert('Registro hecho | Email no enviado'); location.href ='../index_.php?menu=registrarCliente';</script>";
+                    }
+
                 }
             } //here
 

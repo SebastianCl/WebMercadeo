@@ -1,5 +1,4 @@
 <?php
-//Archivo para las clases PHP necesarias en el sitio web
 $idRol                 = null;
 $usuario_administrador = $_POST["usuario_administrador"];
 $clave_administrador   = $_POST["clave_administrador"];

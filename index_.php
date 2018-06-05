@@ -109,6 +109,9 @@ if (isset($_GET['menu'])) {
     if ($_GET['menu'] == 'editarVenta') {
         require_once 'usuarios/FormularioEditarVenta.php';
     }
+    if ($_GET['menu'] == 'registrarPedido') {
+        require_once 'usuarios/FormularioPedido.php';
+    }
 
     if ($_GET['menu'] == 'menuAdmin') {
         if (isset($_SESSION["Session"]) && $_SESSION["Session"] != null) {

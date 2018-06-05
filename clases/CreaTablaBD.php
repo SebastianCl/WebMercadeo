@@ -115,3 +115,19 @@ fkCodigoPP  varchar(10) NOT NULL,
 cantidad int,
 constraint fk_venta foreign key (fkCodVenta) references tblVenta (codVenta),
 constraint fk_prep foreign key (fkCodigoPP) references tblPresenProducto (CodigoPP));");
+
+$stmt13 = $db->query("
+create table tblPedido(
+codPedido int primary key AUTO_INCREMENT,
+fkIdTendero varchar(100) NOT NULL,
+fecha datetime,
+estado bit DEFAULT 1,
+constraint fk_CT foreign key (fkIdTendero) references tblTenderos (idTendero));");
+
+$stmt14 = $db->query("
+create table tblDetallePedido(
+fkCodPedido int NOT NULL,
+fkCodigoPP  varchar(10) NOT NULL,
+cantidad int,
+constraint fk_pedido foreign key (fkCodPedido) references tblPedido (CodPedido),
+constraint fk_prep foreign key (fkCodigoPP) references tblPresenProducto (CodigoPP));");

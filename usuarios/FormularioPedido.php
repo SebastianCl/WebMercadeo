@@ -1,12 +1,12 @@
 <div  class="container page-header text-center">
  <p>
- 	<h2>Edición de Ventas</h2>
+ 	<h2>Registro de pedido</h2>
  </p>
 </div>
-<h4>Seleccione los productos que ha vendido y especifique la cantidad</h4>
+<h4>Seleccione los productos que desea ordenar y especifique la cantidad</h4>
 <div class="container">
 
-	<form action='clases/EditarVentas.php' method='post'>
+	<form action='clases/Registro_Pedido.php' method='post'>
 
 		<div class="input-group">
 			<span class="input-group-addon">
@@ -106,14 +106,14 @@
 					<input id="cantG2" name="cantG2" type="number" placeholder="Ingrese la cantidad vendida" required="true" min="0"  value="0">
 		</div>
 	<br/>
-	<button type="submit" class="btn btn-info btn-block">
-	  <span class="glyphicon glyphicon-edit"></span> Actualizar
+	<button type="submit" class="btn btn-danger btn-block">
+	  <span class="glyphicon glyphicon-edit"></span> Registrar pedido
 	</button>
 
 	</form>
 </div>
 <div  class="container page-header text-center">
  <p>
- 	<h2>Actualizar registro</h2>
+ 	<h2>Registro de pedido</h2>
  </p>
 </div>
