@@ -19,7 +19,23 @@ if (!isset($_SESSION["Session"])) {
                     include "clases/cookies_usuario.php";
                     setcookie("rol", "A", time() + 604800);
                     include 'clases/visita.php';
-                    header("Location: index.php");
+                    $ciu = $row["ciudad"];
+                    switch ($ciu) {
+                           case 'Medellin':
+                               header("Location: index.php?menu=ofertaMedellin");
+                                break;
+                           case 'Bogota':
+                                header("Location: index.php?menu=ofertaBogota");
+                                break;
+                           case 'Cali':
+                               header("Location: index.php?menu=ofertaCali");
+                               break;
+                           
+                           default:
+                               header("Location: index.php");
+                               break;
+                       }   
+                    
                     break;
 
                 case 'T':
@@ -40,14 +56,44 @@ if (!isset($_SESSION["Session"])) {
                     setcookie("idCliente", $tbl2["IdCliente"], time() + 604800);
                     setcookie("emailCliente", $tbl2["email"], time() + 604800);
                     include 'clases/visita.php';
-                    header("Location: index.php");
+                    $ciu = $row["ciudad"];
+                    switch ($ciu) {
+                           case 'Medellin':
+                               header("Location: index.php?menu=ofertaMedellin");
+                                break;
+                           case 'Bogota':
+                                header("Location: index.php?menu=ofertaBogota");
+                                break;
+                           case 'Cali':
+                               header("Location: index.php?menu=ofertaCali");
+                               break;
+                           
+                           default:
+                               header("Location: index.php");
+                               break;
+                       }
                     break;
                 case 'G':
                     $sql = "SELECT * FROM tblGerente WHERE fkIdRol = '" . $tbl["IdRol"] . "'";
                     include 'clases/cookies_usuario.php';
                     setcookie("rol", "G", time() + 604800);
                     include 'clases/visita.php';
-                    header("Location: index.php");
+                    $ciu = $row["ciudad"];
+                    switch ($ciu) {
+                           case 'Medellin':
+                               header("Location: index.php?menu=ofertaMedellin");
+                                break;
+                           case 'Bogota':
+                                header("Location: index.php?menu=ofertaBogota");
+                                break;
+                           case 'Cali':
+                               header("Location: index.php?menu=ofertaCali");
+                               break;
+                           
+                           default:
+                               header("Location: index.php");
+                               break;
+                       }
 
                     break;
                 case 'R':
@@ -55,7 +101,22 @@ if (!isset($_SESSION["Session"])) {
                     include 'clases/cookies_usuario.php';
                     setcookie("rol", "R", time() + 604800);
                     include 'clases/visita.php';
-                    header("Location: index.php");
+                    $ciu = $row["ciudad"];
+                    switch ($ciu) {
+                           case 'Medellin':
+                               header("Location: index.php?menu=ofertaMedellin");
+                                break;
+                           case 'Bogota':
+                                header("Location: index.php?menu=ofertaBogota");
+                                break;
+                           case 'Cali':
+                               header("Location: index.php?menu=ofertaCali");
+                               break;
+                           
+                           default:
+                               header("Location: index.php");
+                               break;
+                       }
                     break;
             }
 

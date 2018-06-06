@@ -96,6 +96,19 @@ if (isset($_GET['menu'])) {
         require_once 'usuarios/estadistica_productos.php';
     }
 
+    if ($_GET['menu'] == 'ofertaMedellin') {
+        require_once 'usuarios/ofertaMedellin.php';
+    }
+
+    if ($_GET['menu'] == 'ofertaBogota') {
+            require_once 'usuarios/ofertaBogota.php';
+        }
+
+    if ($_GET['menu'] == 'ofertaCali') {
+            require_once 'usuarios/ofertaCali.php';
+        }
+
+
     if ($_GET['menu'] == 'encuesta') {
         include "clases/conexion.php";
         $idCliente = $_COOKIE["idCliente"];
