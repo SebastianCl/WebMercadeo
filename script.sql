@@ -135,4 +135,23 @@ ciudad varchar(100),
 contVisitas int,
 constraint fk_vu foreign key (fkIdUsuario) references tblRol (IdRol));
 
+create table tblStock(
+fkCodEstabl varchar (100),
+A1 int,
+A2 int,
+B1 int,
+B2 int,
+C1 int,
+C2 int,
+D1 int,
+D2 int,
+E1 int,
+E2 int,
+F1 int,
+F2 int,
+G1 int,
+G2 int,
+constraint fk_code2 foreign key (fkCodEstabl) references tblEstablecimiento (CodEstabl));
+
+
 

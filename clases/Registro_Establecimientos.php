@@ -22,7 +22,14 @@ if (isset($codEstabl) && isset($nombre_establecimiento) && isset($Ciudad) && iss
         if (!$stmt) {
             echo "<script> alert('Error en al insertar datos en la base de datos');location.href ='../index.php?menu=registrarEstablecimiento';</script>";
         } else {
-            echo "<script> alert('Registro hecho');location.href ='../index.php?menu=registrarEstablecimiento';</script>";
+            $sql  = "INSERT INTO tblStock VALUES ('$codEstabl','100','100','100','100','100','100','100','100','100','100','100','100','100','100')";
+            $stmt = mysql_query($sql, $db);
+            if ($stmt) {
+                echo "<script> alert('Registro hecho');location.href ='../index.php?menu=registrarEstablecimiento';</script>";
+            } else {
+                echo "<script> alert('Registro hecho | Falla en el stock');location.href ='../index.php?menu=registrarEstablecimiento';</script>";
+            }
+
         }
     }
 }

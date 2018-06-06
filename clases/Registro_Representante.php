@@ -15,7 +15,7 @@ if (isset($usuario_representante) && isset($clave_representante)) {
     } else {
 
         $idRepresentante = $_POST['idrepresentante'];
-        $sql             = "SELECT * FROM tblrepresentante WHERE IdRepresentante = '" . $idRepresentante . "'";
+        $sql             = "SELECT * FROM tblRepresentante WHERE IdRepresentante = '" . $idRepresentante . "'";
         $result          = mysql_query($sql, $db);
         $num_filas       = mysql_num_rows($result);
         if ($num_filas > 0) {
@@ -24,7 +24,7 @@ if (isset($usuario_representante) && isset($clave_representante)) {
             $sql  = "insert into tblRol (usuario,clave,rol) values ('$usuario_representante', '$clave_representante', '$rol')";
             $stmt = mysql_query($sql, $db);
 
-            $sql       = "SELECT * FROM tblRol WHERE usuario =  '" . $usuario_gerente . "'";
+            $sql       = "SELECT * FROM tblRol WHERE usuario =  '" . $usuario_representante . "'";
             $result    = mysql_query($sql, $db);
             $num_filas = mysql_num_rows($result);
             if ($num_filas > 0) {

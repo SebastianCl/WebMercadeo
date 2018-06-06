@@ -106,6 +106,17 @@ if (isset($_COOKIE["rol"]) && $_COOKIE["rol"] == "T" && isset($_SESSION["Session
 	<li>
 		<?php
 
+if (isset($_COOKIE["rol"]) && ($_COOKIE["rol"] == "G" || $_COOKIE["rol"] == "R") && isset($_SESSION["Session"])) {?>
+		<a href="?menu=Estadistica"><span class="glyphicon glyphicon-list-alt"></span>
+			Estadistica
+		</a>
+		<?PHP }?>
+	</li>
+<!---------------------------------------------------------------------------------------------------->
+
+	<li>
+		<?php
+
 if (isset($_SESSION["Session"])) {
     ?>
 		<a href="#"><span class="glyphicon glyphicon-time"></span>

@@ -89,9 +89,11 @@ if (isset($_GET['menu'])) {
     if ($_GET['menu'] == 'consultarAdministrador') {
         require_once 'usuarios/consulta_administradores.php';
     }
-
     if ($_GET['menu'] == 'consultarProductos') {
         require_once 'usuarios/consulta_productos.php';
+    }
+    if ($_GET['menu'] == 'Estadistica') {
+        require_once 'usuarios/estadistica_productos.php';
     }
 
     if ($_GET['menu'] == 'encuesta') {

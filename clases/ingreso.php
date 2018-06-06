@@ -2,7 +2,6 @@
 if (!isset($_SESSION["Session"])) {
     $_SESSION['Usuario'] = $_POST['usuario'];
     $_SESSION['Clave']   = $_POST['clave'];
-    setcookie("ultima_ciudad", $_POST['ciudad_local'], time() + 604800);
 
     if (isset($_SESSION['Clave']) && isset($_SESSION['Clave'])) {
 
@@ -13,12 +12,13 @@ if (!isset($_SESSION["Session"])) {
         $result = mysql_query($sql, $db);
         $tbl    = mysql_fetch_array($result);
         if ($tbl["usuario"] == $_POST['usuario']) {
+            setcookie("id_usuario", $tbl["IdRol"], time() + 604800);
             switch ($tbl["rol"]) {
                 case 'A':
                     $sql = "SELECT * FROM tblAdministrador WHERE fkIdRol = '" . $tbl["IdRol"] . "'";
-                    include 'clases/cookies_usuario.php';
+                    include "clases/cookies_usuario.php";
                     setcookie("rol", "A", time() + 604800);
-                    include 'visita.php';
+                    include 'clases/visita.php';
                     header("Location: index.php");
                     break;
 
@@ -27,7 +27,8 @@ if (!isset($_SESSION["Session"])) {
                     include 'clases/cookies_usuario.php';
                     setcookie("rol", "T", time() + 604800);
                     setcookie("idTendero", $tbl2["idTendero"], time() + 604800);
-                    include 'visita.php';
+                    setcookie("CodEstabl", $tbl2["fkCodEstabl"], time() + 604800);
+                    include 'clases/visita.php';
                     header("Location: index.php");
                     break;
 
@@ -38,14 +39,14 @@ if (!isset($_SESSION["Session"])) {
                     $idCliente = $tbl2["IdCliente"];
                     setcookie("idCliente", $tbl2["IdCliente"], time() + 604800);
                     setcookie("emailCliente", $tbl2["email"], time() + 604800);
-                    include 'visita.php';
+                    include 'clases/visita.php';
                     header("Location: index.php");
                     break;
                 case 'G':
                     $sql = "SELECT * FROM tblGerente WHERE fkIdRol = '" . $tbl["IdRol"] . "'";
                     include 'clases/cookies_usuario.php';
                     setcookie("rol", "G", time() + 604800);
-                    include 'visita.php';
+                    include 'clases/visita.php';
                     header("Location: index.php");
 
                     break;
@@ -53,7 +54,7 @@ if (!isset($_SESSION["Session"])) {
                     $sql = "SELECT * FROM tblRepresentante WHERE fkIdRol = '" . $tbl["IdRol"] . "'";
                     include 'clases/cookies_usuario.php';
                     setcookie("rol", "R", time() + 604800);
-                    include 'visita.php';
+                    include 'clases/visita.php';
                     header("Location: index.php");
                     break;
             }
